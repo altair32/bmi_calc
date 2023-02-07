@@ -30,7 +30,7 @@ class _inputpageState extends State<inputpage> {
       body: Center(
         child: Text("Body"),
       ),
-      floatingActionButton: ,
+     // floatingActionButton: ,
     );
   }
 }
