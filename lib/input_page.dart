@@ -13,10 +13,71 @@ class _inputpageState extends State<inputpage> {
       appBar: AppBar(
         title: Text("BMI Calculator"),
       ),
-      body: Container(
-        color: Color(0xFF1D1E33),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 12
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 8,
+              ),
+              verticalcard(colour: Color(0xFF0A0E21),),
+              SizedBox(
+                width: 20,
+              ),
+              verticalcard(colour: Color(0xFF0A0E21),),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Container(
+            height: 200,
+            width: 400,
+            color: Color(0xFF0A0E21),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+              ),
+              color: Color(0xFF1D1E33),
+            ),
+          ),
+          SizedBox(height: 10,),
+          Row(
+            children: [
+              SizedBox(
+                width: 8,
+              ),
+              verticalcard(colour: Color(0xFF0A0E21),),
+              SizedBox(
+                width: 20,
+              ),
+              verticalcard(colour: Color(0xFF0A0E21),),
+            ],
+          ),
+        ],
       )
       // floatingActionButton: ,
+    );
+  }
+}
+
+class verticalcard extends StatelessWidget {
+   verticalcard({required this.colour});
+  Color colour;
+  @override
+  Widget build(BuildContext context) {
+
+    return Container(
+      height: 250,
+      width: 190,
+      color: Color(0xFF0A0E21),
+      child: Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20)
+        ),
+        color: colour,//Color(0xFF1D1E33),
+      ),
     );
   }
 }
