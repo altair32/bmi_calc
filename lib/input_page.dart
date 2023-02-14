@@ -11,7 +11,7 @@ class _inputpageState extends State<inputpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BMI Calculator"),
+        title: Text("BMI Indexing"),
       ),
       body: Column(
         children: [
@@ -23,11 +23,11 @@ class _inputpageState extends State<inputpage> {
               SizedBox(
                 width: 8,
               ),
-              verticalcard(colour: Color(0xFF0A0E21),),
+              verticalcard(colour: Color(0xFF1D1E33),),
               SizedBox(
                 width: 20,
               ),
-              verticalcard(colour: Color(0xFF0A0E21),),
+              verticalcard(colour: Color(0xFF1D1E33),),
             ],
           ),
           SizedBox(height: 10,),
@@ -48,16 +48,15 @@ class _inputpageState extends State<inputpage> {
               SizedBox(
                 width: 8,
               ),
-              verticalcard(colour: Color(0xFF0A0E21),),
+              verticalcard(colour: Color(0xFF1D1E33),),
               SizedBox(
                 width: 20,
               ),
-              verticalcard(colour: Color(0xFF0A0E21),),
+              verticalcard(colour: Color(0xFF1D1E33),),
             ],
           ),
         ],
       )
-      // floatingActionButton: ,
     );
   }
 }
