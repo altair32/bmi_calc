@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 const cardColor=Color(0xFF1D1E33);
+const inactivecardcolor=Color(0xF111328);
 class inputpage extends StatefulWidget {
   const inputpage({Key? key}) : super(key: key);
 
@@ -9,6 +10,26 @@ class inputpage extends StatefulWidget {
 }
 
 class _inputpageState extends State<inputpage> {
+  Color malecardcolor=inactivecardcolor;
+  Color femalecardcolor=inactivecardcolor;
+  void updatecolor(int g){
+    if (g==1)
+      {
+        if(malecardcolor==inactivecardcolor)
+          {malecardcolor=cardColor;
+           femalecardcolor=inactivecardcolor;}
+        else
+          malecardcolor=inactivecardcolor;
+      }
+    if(g==2)
+    {
+      if(femalecardcolor==inactivecardcolor)
+        {femalecardcolor=cardColor;
+          malecardcolor=inactivecardcolor;}
+      else
+        femalecardcolor=inactivecardcolor;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +49,24 @@ class _inputpageState extends State<inputpage> {
                     width: 8,
                   ),
                   GestureDetector(
-                    onTap: (){},
-                    child: verticalcard(colour:cardColor,
+                    onTap: (){
+                      setState(() {
+                        updatecolor(1);
+                      });
+                    },
+                    child: verticalcard(colour:malecardcolor,
                          cardchild: genderDetails(chitra: FontAwesomeIcons.mars,gender: "MALE",),       ),
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  verticalcard(colour: cardColor,cardchild: genderDetails(chitra: FontAwesomeIcons.venus,gender: "FEMALE",),),
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        updatecolor(2);
+                      });
+                    },
+                      child: verticalcard(colour: femalecardcolor,cardchild: genderDetails(chitra: FontAwesomeIcons.venus,gender: "FEMALE",),)),
                 ],
               ),
               SizedBox(height: 10,),
