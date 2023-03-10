@@ -12,6 +12,7 @@ class inputpage extends StatefulWidget {
 class _inputpageState extends State<inputpage> {
   Color malecardcolor=inactivecardcolor;
   Color femalecardcolor=inactivecardcolor;
+  int height=180;
   void updatecolor(int g){
     if (g==1)
       {
@@ -73,8 +74,29 @@ class _inputpageState extends State<inputpage> {
               Container(
                 height: 200,
                 width: 400,
-                color: Color(0xFF0A0E21),
+                 color: Color(0xFF0A0E21),
                 child: Card(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 20,),
+                      Text('HEIGHT', style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),),
+                      SizedBox(height:20),
+                      Text(height.toString(), style: TextStyle(
+                        color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold
+                      ) ,),
+                      Slider(value: height.toDouble(),
+                          min: 120,
+                          max: 240,
+                          activeColor: Colors.red,
+                          inactiveColor: Colors.grey, onChanged: (double newvalue){
+                          setState(() {
+                            height=newvalue.round();
+                          });
+                      })
+                    ],
+                  ),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)
                   ),
@@ -102,7 +124,9 @@ class _inputpageState extends State<inputpage> {
             color: Colors.red,
             margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
             child: Center(
-                      child: Text("Calculate", style: TextStyle(),),
+                      child: Text("Calculate", style: TextStyle(color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,),),
             ),
           )
         ],
