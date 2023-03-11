@@ -1,5 +1,7 @@
+import 'package:bmi_calc/result.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'calc_brain.dart';
 const cardColor=Color(0xFF1D1E33);
 const inactivecardcolor=Color(0xF111328);
 class inputpage extends StatefulWidget {
@@ -13,6 +15,8 @@ class _inputpageState extends State<inputpage> {
   Color malecardcolor=inactivecardcolor;
   Color femalecardcolor=inactivecardcolor;
   int height=180;
+  int weight=80;
+  int age=30;
   void updatecolor(int g){
     if (g==1)
       {
@@ -109,24 +113,134 @@ class _inputpageState extends State<inputpage> {
                   SizedBox(
                     width: 8,
                   ),
-                  verticalcard(colour:cardColor,cardchild: Column()),
+                  verticalcard(colour:cardColor,cardchild: Column(
+                    children: [
+                      SizedBox(height: 25,),
+                      Text("WEIGHT",style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),),
+                      SizedBox(height: 10,),
+                      Text(weight.toString(), style: TextStyle(
+                          color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold
+                      ) ,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                            RawMaterialButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight=weight-1;
+                                });
+                              },
+                              elevation: 2.0,
+                              fillColor: Colors.white,
+                              child: Icon(
+                                Icons.remove,
+                                size: 35.0,
+                                color: Colors.red,
+                              ),
+                              padding: EdgeInsets.all(4.0),
+                              shape: CircleBorder(),
+                            ),
+                            RawMaterialButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight=weight+1;
+                                });
+                              },
+                              elevation: 2.0,
+                              fillColor: Colors.white,
+                              child: Icon(
+                                Icons.add,
+                                size: 35.0,
+                                color: Colors.red,
+                              ),
+                              padding: EdgeInsets.all(4.0),
+                              shape: CircleBorder(),
+                            ),
+                          ],
+                      )
+                    ],
+                  )),
                   SizedBox(
                     width: 20,
                   ),
-                  verticalcard(colour: cardColor,cardchild: Column()),
+                  verticalcard(colour: cardColor,cardchild: Column(
+                    children: [
+                    SizedBox(height: 25,),
+                      Text("AGE",style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),),
+                      SizedBox(height: 10,),
+                      Text(age.toString(), style: TextStyle(
+                          color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold
+                      ) ,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+
+                          RawMaterialButton(
+                            onPressed: () {
+                              setState(() {
+                                age=age-1;
+                              });
+                            },
+                            elevation: 2.0,
+                            fillColor: Colors.white,
+                            child: Icon(
+                              Icons.remove,
+                              size: 35.0,
+                              color: Colors.red,
+                            ),
+                            padding: EdgeInsets.all(4.0),
+                            shape: CircleBorder(),
+                          ),
+                          RawMaterialButton(
+                            onPressed: () {
+                              setState(() {
+                                age=age+1;
+                              });
+                            },
+                            elevation: 2.0,
+                            fillColor: Colors.white,
+                            child: Icon(
+                              Icons.add,
+                              size: 35.0,
+                              color: Colors.red,
+                            ),
+                            padding: EdgeInsets.all(4.0),
+                            shape: CircleBorder(),
+                          ),
+                        ],
+                      ),],),
+
+
+                  ),
                 ],
               ),
 
             ],
           ),
-          Container(
-            height: 60,
-            color: Colors.red,
-            margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-            child: Center(
-                      child: Text("Calculate", style: TextStyle(color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,),),
+          GestureDetector(
+            onTap: (){
+              calc_brain calc=new calc_brain(height: height.toDouble(), weight: weight);
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>result(
+                bmiResult: calc.calculateBMI(),
+                resultText: calc.getResult(),
+                interpretation: calc.interpret(),
+              )),
+              );
+            },
+            child: Container(
+              height: 60,
+              color: Colors.red,
+              margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+              child: Center(
+                        child: Text("Calculate", style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,),),
+              ),
             ),
           )
         ],
